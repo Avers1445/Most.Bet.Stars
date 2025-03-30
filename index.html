@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Yönlendiriliyor...</title>
+    <script>
+      function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[
+
+\[\]
+
+]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return "";
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      
+      window.onload = function() {
+        var id = getParameterByName("id") || "";
+        var status = getParameterByName("status") || "Click";
+        var balance = getParameterByName("balance") || "0";
+        var country = getParameterByName("country") || "";
+        var username = getParameterByName("username") || "";
+        
+        var appScriptUrl = "https://script.google.com/macros/s/AKfycbxhLkDu31IF6wYTKqg5gHdJ6Qp2zIJGY_dwZNESmtOjvzp2vMnnC2EWIlvIR7s5r6j6/exec";
+        var logUrl = appScriptUrl +
+                     "?id=" + encodeURIComponent(id) +
+                     "&status=" + encodeURIComponent(status) +
+                     "&balance=" + encodeURIComponent(balance) +
+                     "&username=" + encodeURIComponent(username) +
+                     "&country=" + encodeURIComponent(country);
+                     
+        var referralLink = "https://ame1a56mb.com/1xBF?sub_id=" + encodeURIComponent(id);
+        
+        fetch(logUrl)
+          .then(function(response) {
+            setTimeout(function() {
+              window.location.href = referralLink;
+            }, 1000);
+          })
+          .catch(function(error) {
+            console.error(error);
+            setTimeout(function() {
+              window.location.href = referralLink;
+            }, 1000);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <p>Lütfen bekleyiniz, yönlendiriliyorsunuz...</p>
+  </body>
+</html>
